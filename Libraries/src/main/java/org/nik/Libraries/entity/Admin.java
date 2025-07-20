@@ -21,18 +21,31 @@ public class Admin
 	private String establishDate;
 	@Column(nullable = false)
 	private int totalPages;
-	
+	@Column(nullable = false)
+	private String password;
 	public Integer getId() {
 		return id;
 	}
 	public void setId(Integer id) {
 		this.id = id;
 	}
+	public String getAdminname() {
+		return adminname;
+	}
+	public void setAdminname(String adminname) {
+		this.adminname = adminname;
+	}
 	public String getBookname() {
 		return bookname;
 	}
 	public void setBookname(String bookname) {
 		this.bookname = bookname;
+	}
+	public String getCategory() {
+		return category;
+	}
+	public void setCategory(String category) {
+		this.category = category;
 	}
 	public String getEstablishDate() {
 		return establishDate;
@@ -46,21 +59,15 @@ public class Admin
 	public void setTotalPages(int totalPages) {
 		this.totalPages = totalPages;
 	}
-	public String getAdminname() {
-		return adminname;
+	public String getPassword() {
+		return password;
 	}
-	public void setAdminname(String adminname) {
-		this.adminname = adminname;
-	}
-	public String getCategory() {
-		return category;
-	}
-	public void setCategory(String category) {
-		this.category = category;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	@Override
 	public String toString() {
-		return "Admin [id=" + id + ", username=" + adminname + ", bookname=" + bookname + ", category=" + category
-				+ ", establishDate=" + establishDate + ", totalPages=" + totalPages + "]";
+		return "Admin [id=" + id + ", adminname=" + adminname + ", bookname=" + bookname + ", category=" + category
+				+ ", establishDate=" + establishDate + ", totalPages=" + totalPages + ", password=" + password + "]";
 	}
 }
