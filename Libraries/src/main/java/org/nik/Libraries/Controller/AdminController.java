@@ -49,7 +49,7 @@ public class AdminController
 		return adminService.UpdateAdmin(admin);
 	}
 	
-	@DeleteMapping("/deleteAdmin/{id}")
+	@DeleteMapping("/DeleteAdmin/{id}")
 	public ResponseEntity<ResponseStructure<String>> deleteAdmin(@PathVariable Integer id)
 	{
 		return adminService.DeleteAdmin(id);
