@@ -11,15 +11,15 @@ public class Admin
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	@Column(unique = true,nullable = true)
+	@Column(unique = true,nullable = false)
 	private String username;
-	@Column(nullable = true)
+	@Column(nullable = false)
 	private String bookname;
-	@Column(nullable = true)
-	private String topic;
-	@Column(nullable = true)
+	@Column(nullable = false)
+	private String category;
+	@Column(nullable = false)
 	private String establishDate;
-	@Column(nullable = true)
+	@Column(nullable = false)
 	private int totalPages;
 	
 	public Integer getId() {
@@ -41,10 +41,10 @@ public class Admin
 		this.bookname = bookname;
 	}
 	public String getTopic() {
-		return topic;
+		return category;
 	}
-	public void setTopic(String topic) {
-		this.topic = topic;
+	public void setTopic(String category) {
+		this.category = category;
 	}
 	public String getEstablishDate() {
 		return establishDate;
@@ -60,7 +60,7 @@ public class Admin
 	}
 	@Override
 	public String toString() {
-		return "Admin [id=" + id + ", username=" + username + ", bookname=" + bookname + ", topic=" + topic
+		return "Admin [id=" + id + ", username=" + username + ", bookname=" + bookname + ", category=" + category
 				+ ", establishDate=" + establishDate + ", totalPages=" + totalPages + "]";
 	}
 }

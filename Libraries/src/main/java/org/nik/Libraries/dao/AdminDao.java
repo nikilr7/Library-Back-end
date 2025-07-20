@@ -1,8 +1,6 @@
 package org.nik.Libraries.dao;
-
 import java.util.List;
 import java.util.Optional;
-
 import org.nik.Libraries.Repository.AdminRepository;
 import org.nik.Libraries.entity.Admin;
 import org.springframework.beans.factory.annotation.Autowired;
