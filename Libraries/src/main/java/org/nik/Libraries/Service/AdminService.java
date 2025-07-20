@@ -106,9 +106,4 @@ public class AdminService
 			throw new IdNotFoundException();
 		}
 	}
-	
-	
-	
-	
-
 }
