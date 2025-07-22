@@ -19,11 +19,13 @@ public class Student
 	@Column(nullable = false)
 	private String section;
 	@Column(nullable = false)
-	private String dataOfBirth;
+	private String dateOfBirth;
 	@Column(nullable = false)
 	private String address;
 	@Column(nullable = false,length = 10)
-	private long phone;
+	private String phone;
+	@Column(nullable = false)
+	private String password;
 	public Integer getId() {
 		return id;
 	}
@@ -48,11 +50,11 @@ public class Student
 	public void setSection(String section) {
 		this.section = section;
 	}
-	public String getDataOfBirth() {
-		return dataOfBirth;
+	public String getDateOfBirth() {
+		return dateOfBirth;
 	}
-	public void setDataOfBirth(String dataOfBirth) {
-		this.dataOfBirth = dataOfBirth;
+	public void setDateOfBirth(String dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
 	}
 	public String getAddress() {
 		return address;
@@ -60,15 +62,21 @@ public class Student
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public long getPhone() {
+	public String getPhone() {
 		return phone;
 	}
-	public void setPhone(long phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	@Override
 	public String toString() {
-		return "Student [id=" + id + ", rollNo=" + rollNo + ", name=" + name + ", section=" + section + ", dataOfBirth="
-				+ dataOfBirth + ", address=" + address + ", phone=" + phone + "]";
+		return "Student [id=" + id + ", rollNo=" + rollNo + ", name=" + name + ", section=" + section + ", dateOfBirth="
+				+ dateOfBirth + ", address=" + address + ", phone=" + phone + ", password=" + password + "]";
 	}
 }
