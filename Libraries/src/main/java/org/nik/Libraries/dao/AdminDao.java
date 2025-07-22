@@ -37,5 +37,10 @@ public class AdminDao
 		return "Deleted"; 
 	}
 	
+	public Optional<Admin> getAdminByAdminnameAndPassword(String adminname,String password)
+	{
+		 return Optional.of(repository.getAdminByAdminnameAndPassword(adminname, password));
+	}
+	
 
 }

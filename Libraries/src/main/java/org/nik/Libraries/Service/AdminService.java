@@ -9,8 +9,10 @@ import org.nik.Libraries.dao.AdminDao;
 import org.nik.Libraries.entity.Admin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.nik.Libraries.ExceptionsHandle.MismatchingNotFound;
 
 @Service
 public class AdminService 
@@ -58,11 +60,11 @@ public class AdminService
 		
 		ResponseStructure<List<Admin>> response=new ResponseStructure<List<Admin>>();
 		
-		response.setHttpstatuscode(HttpStatus.FOUND.value());
+		response.setHttpstatuscode(HttpStatus.OK.value());
 		response.setData(findAll);
 		response.setMessage("All Admins Are Assembled");
 		
-		return new ResponseEntity<ResponseStructure<List<Admin>>>(response,null,HttpStatus.FOUND);
+		return new ResponseEntity<ResponseStructure<List<Admin>>>(response,null,HttpStatus.OK);
 	}
 	
 	public ResponseEntity<ResponseStructure<Admin>> UpdateAdmin(Admin admin)
@@ -105,5 +107,27 @@ public class AdminService
 		{
 			throw new IdNotFoundException();
 		}
+		
+	}
+	
+	public ResponseEntity<ResponseStructure<Admin>> getAdminByAdminnameAndPassword (String adminname,String password)
+	{
+		Optional<Admin> fetch=adminDao.getAdminByAdminnameAndPassword(adminname,password);
+		
+		ResponseStructure<Admin> response= new ResponseStructure<Admin>();
+		
+		if(fetch.isPresent())
+		{
+			response.setData(fetch.get());
+			response.setHttpstatuscode(HttpStatus.OK.value());
+			response.setMessage("Found");
+			return new ResponseEntity<ResponseStructure<Admin>>(response,null,HttpStatus.OK);
+		}
+		else
+		{
+			throw new MismatchingNotFound();
+		}	
+		
 	}
 }
+

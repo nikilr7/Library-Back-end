@@ -2,9 +2,11 @@ package org.nik.Libraries.Controller;
 
 import java.util.List;
 
+import org.nik.Libraries.ExceptionsHandle.MismatchingNotFound;
 import org.nik.Libraries.HelperClasses.ResponseStructure;
 import org.nik.Libraries.Service.AdminService;
 import org.nik.Libraries.entity.Admin;
+import org.nik.Libraries.entity.AdminnameAndPassword;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -54,5 +56,18 @@ public class AdminController
 	{
 		return adminService.DeleteAdmin(id);
 	}
+	
+	@GetMapping("/GetAdminByAdminnameAndPassword")
+	public ResponseEntity<ResponseStructure<Admin>> getAdminByAdminnameAndPassword(@RequestBody AdminnameAndPassword check )
+	{
+		try
+		{
+		return adminService.getAdminByAdminnameAndPassword(check.getAdminname(), check.getPassword());
+		}catch(Exception e)
+		{
+			throw new MismatchingNotFound();
+		}
+	}
+	
 	
 }
